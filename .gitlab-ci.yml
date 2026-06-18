@@ -25,11 +25,3 @@ run_cross_browser_tests:
     - echo "Uruchamiam testy jednocześnie na wielu przeglądarkach..."
     # odpalanie komendą testu z pliku test_ing.py
     - pytest -s test_ing.py
-
-  # Zachowanie ciasteczek jako artefaktów w panelu GitLaba 
-  # jeśli kod by zapisywał, póki co nie zapisuje
-  artifacts:
-    when: always
-    paths:
-      - cookies_*.txt
-    expire_in: 1 week
