@@ -24,4 +24,4 @@ run_cross_browser_tests:
   script:
     - echo "Uruchamiam testy jednocześnie na wielu przeglądarkach..."
     # odpalanie komendą testu z pliku test_ing.py
-    - pytest -s test_ing.py
+    - pytest -s test_ingTest.py
