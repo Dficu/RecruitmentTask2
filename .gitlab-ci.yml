@@ -11,7 +11,7 @@ cache:
 run_cross_browser_tests:
   stage: test
   # oficjalny obraz z gotowym środowiskiem Playwright i Pythonem
-  image: ://microsoft.com
+  image: mcr.microsoft.com/playwright/python:v1.44.0-jamm 
   
   variables:
     PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
