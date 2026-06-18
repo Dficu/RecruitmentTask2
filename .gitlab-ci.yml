@@ -1,0 +1,35 @@
+stages:
+  - test
+
+cache:
+  key:
+    files:
+      - requirements.txt  
+  paths:
+    - .cache/pip    
+
+run_cross_browser_tests:
+  stage: test
+  # oficjalny obraz z gotowym środowiskiem Playwright i Pythonem
+  image: ://microsoft.com
+  
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+  before_script:
+    - python -V
+    - pip install --no-cache-dir pytest playwright
+    - playwright install chromium firefox webkit
+
+  script:
+    - echo "Uruchamiam testy jednocześnie na wielu przeglądarkach..."
+    # odpalanie komendą testu z pliku test_ing.py
+    - pytest -s test_ing.py
+
+  # Zachowanie ciasteczek jako artefaktów w panelu GitLaba 
+  # jeśli kod by zapisywał, póki co nie zapisuje
+  artifacts:
+    when: always
+    paths:
+      - cookies_*.txt
+    expire_in: 1 week
